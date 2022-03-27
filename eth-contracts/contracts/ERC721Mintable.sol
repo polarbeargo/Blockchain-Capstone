@@ -18,12 +18,21 @@ contract Ownable {
     }
 
     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
-     modifier onlyOwner()
-    {
-        require(msg.sender == _owner,"Caller is not a contract owner");
+    modifier onlyOwner() {
+        require(msg.sender == _owner, "Caller is not a contract owner");
         _;
     }
+
     //  4) fill out the transferOwnership function
+    function transferOwnership(address newOwner) internal {
+        require(
+            newOwner != address(0),
+            "New owner should not be a empty address"
+        );
+        emit TransferOwnership(_owner, newOwner);
+        _owner = newOwner;
+    }
+
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
 
     function transferOwnership(address newOwner) public onlyOwner {
