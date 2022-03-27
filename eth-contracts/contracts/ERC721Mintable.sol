@@ -24,7 +24,9 @@ contract Ownable {
     }
 
     //  4) fill out the transferOwnership function
-    function transferOwnership(address newOwner) internal {
+    function transferOwnership(address newOwner) public onlyOwner {
+        // Add functionality to transfer control of the contract to a newOwner.
+        // make sure the new owner is a real address
         require(
             newOwner != address(0),
             "New owner should not be a empty address"
@@ -34,11 +36,7 @@ contract Ownable {
     }
 
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
-
-    function transferOwnership(address newOwner) public onlyOwner {
-        // TODO add functionality to transfer control of the contract to a newOwner.
-        // make sure the new owner is a real address
-    }
+    event TransferOwnership(address indexed oldOwner, address indexed newOwner);
 }
 
 //  TODO's: Create a Pausable contract that inherits from the Ownable contract
