@@ -15,7 +15,9 @@ contract SolnSquareVerifier is CustomERC721Token {
     // define a mapping to store unique solutions submitted
     mapping(bytes32 => Solution) uniqueSolutions;
 
-    // TODO Create an event to emit when a solution is added
+    // Create an event to emit when a solution is added
+    event AddSolution(address to, uint256 tokenId);
+
     // TODO Create a function to add the solutions to the array and emit the event
     // TODO Create a function to mint new NFT only after the solution has been verified
     //  - make sure the solution is unique (has not been used before)
