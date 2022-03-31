@@ -11,7 +11,7 @@ contract SolnSquareVerifier is CustomERC721Token {
         uint256 tokenId;
     }
     // define an array of the above struct
-    Solutions[] solutions;
+    Solution[] solutions;
     // define a mapping to store unique solutions submitted
     mapping(bytes32 => Solution) uniqueSolutions;
 
