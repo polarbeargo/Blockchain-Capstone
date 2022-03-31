@@ -30,7 +30,20 @@ contract SolnSquareVerifier is CustomERC721Token {
 
         emit AddSolution(to, tokenId);
     }
-    // TODO Create a function to mint new NFT only after the solution has been verified
+
+    // Create a function to mint new NFT only after the solution has been verified
     //  - make sure the solution is unique (has not been used before)
     //  - make sure you handle metadata as well as tokenSuplly
+    function mintNewNFT(
+        uint256 a,
+        uint256 b,
+        address to,
+        uint256 tokenId
+    ) public {
+        bytes32 key = keccak256(abi.encodePacked(a, b));
+        require(uniqueSolutions[key].to == address(0));
+
+        addSolution(to, tokenId, key);
+        super._mint(to, tokenId);
+    }
 }
