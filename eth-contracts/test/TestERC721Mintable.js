@@ -17,20 +17,27 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should return total supply', async function () { 
+            let res = await this.contract.totalSupply();
+            assert.equal(res, 5, "Incorrect total suppl.");
             
         })
 
         it('should get token balance', async function () { 
-            
+            let balance = await this.contract.balanceOf(account_one);
+            assert.equal(balance, 5, "Incorrect number of account_one token balance.");
+            let balance2 = await this.contract.balanceOf(account_two);
+            assert.equal(balance2, 0, "Incorrect number of account_two token balance.");
         })
 
         // token uri should be complete i.e: https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1
         it('should return token uri', async function () { 
-            
+            token_uri = await this.contract.tokenURI(1);
+            assert.equal(token_uri, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/1", "token uri is not found.") 
         })
 
         it('should transfer token from one owner to another', async function () { 
-            
+            let owner = await this.contract.ownerOf(2);
+            assert.equal(owner, account_two, "token transfer fail");
         })
     });
 
