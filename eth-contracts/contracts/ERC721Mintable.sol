@@ -13,7 +13,7 @@ contract Ownable {
     //  2) create an internal constructor that sets the _owner var to the creater of the contract
     constructor() internal {
         _owner = msg.sender;
-        emit OwnershipTransfered(address(0), _owner);
+        emit TransferOwnership(address(0), _owner);
     }
 
     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
