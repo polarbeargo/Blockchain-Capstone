@@ -1,10 +1,11 @@
 pragma solidity >=0.4.21 <0.6.0;
 import "./ERC721Mintable.sol";
+import "./BN256G2.sol";
 
 // define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is CustomERC721Token {
     // define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-    SquareVerifier verifierContract;
+    BN256G2 verifierContract;
     // define a solutions struct that can hold an index & an address
     struct Solution {
         address to;
