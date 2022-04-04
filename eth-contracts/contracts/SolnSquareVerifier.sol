@@ -25,9 +25,9 @@ contract SolnSquareVerifier is CustomERC721Token {
         uint256 tokenId,
         bytes32 key
     ) public {
-        Solution memory solution = Solution({tokenId: tokenId, to: to});
-        solution.push(solution);
-        uniqueSolutions[key] = solution;
+        Solution memory sol = Solution({tokenId: tokenId, to: to});
+        solutions.push(sol);
+        uniqueSolutions[key] = sol;
 
         emit AddSolution(to, tokenId);
     }
