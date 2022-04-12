@@ -2,6 +2,7 @@
 // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
 var SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
 var Verifier = artifacts.require('BN256G2');
+var proofData = artifacts.require('/home/polarbear/Documents/Blockchain-Capstone/zokrates/code/square/proof.json');
 
 contract('Test SolnSquareVerifier', accounts => {
 
@@ -14,7 +15,7 @@ contract('Test SolnSquareVerifier', accounts => {
         it('if a new solution can be added for contract and token minted - SolnSquareVerifier', async function () { 
             let success = true;
             try {
-                await this.contract.mintNewNFT();
+                await this.contract.mintNewNFT(accounts[1], 2, proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs, {from: accounts[0]});
             } catch(error) {
                 success = false;
             }
@@ -25,10 +26,10 @@ contract('Test SolnSquareVerifier', accounts => {
         it('if a repeat solution can be added for contract - SolnSquareVerifier', async function () { 
             let success = true;
 
-            await this.contract.mintNewNFT();
+            await this.contract.mintNewNFT(accounts[1], 2, proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs, {from: accounts[0]});
 
             try {
-                await this.contract.mintNewNFT();
+                await this.contract.mintNewNFT(accounts[1], 3, proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs, {from: accounts[0]});
             } catch(error) {
                 success = false;
             }
