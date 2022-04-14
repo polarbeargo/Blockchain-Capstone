@@ -1,12 +1,18 @@
 pragma solidity >=0.4.21 <0.6.0;
 import "./ERC721Mintable.sol";
-import "./BN256G2.sol";
+import "./Verifier.sol";
 
 // define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
 contract SolnSquareVerifier is CustomERC721Token {
     // define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-    BN256G2 verifierContract;
-
+    Verifier private verifierContract;
+    
+    constructor(address verifierAddress) 
+        CustomERC721Token() 
+        public 
+    {
+        verifierContract = Verifier(verifierAddress);
+    }
     // define a solutions struct that can hold an index & an address
     struct Solution {
         address to;
@@ -19,7 +25,7 @@ contract SolnSquareVerifier is CustomERC721Token {
 
     // Create an event to emit when a solution is added
     event AddSolution(address to, uint256 tokenId);
-
+ 
     // Create a function to add the solutions to the array and emit the event
     function addSolution(
         address to,
