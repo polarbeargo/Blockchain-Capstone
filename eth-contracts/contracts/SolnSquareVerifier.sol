@@ -6,13 +6,11 @@ import "./Verifier.sol";
 contract SolnSquareVerifier is CustomERC721Token {
     // define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
     Verifier private verifierContract;
-    
-    constructor(address verifierAddress) 
-        CustomERC721Token() 
-        public 
-    {
+
+    constructor(address verifierAddress) public CustomERC721Token() {
         verifierContract = Verifier(verifierAddress);
     }
+
     // define a solutions struct that can hold an index & an address
     struct Solution {
         address to;
@@ -25,7 +23,7 @@ contract SolnSquareVerifier is CustomERC721Token {
 
     // Create an event to emit when a solution is added
     event AddSolution(address to, uint256 tokenId);
- 
+
     // Create a function to add the solutions to the array and emit the event
     function addSolution(
         address to,
@@ -59,7 +57,8 @@ contract SolnSquareVerifier is CustomERC721Token {
     ) public {
         bytes32 key = keccak256(abi.encodePacked(a, b, c, input));
         require(uniqueSolutions[key].to == address(0));
-        require(verifierContract.verifyTx(a, b, c, input));
+        bool verified = verifierContract.verifyTx(a, b, c, input);
+        require(verified);
         addSolution(to, tokenId, key);
         super._mint(to, tokenId);
     }
