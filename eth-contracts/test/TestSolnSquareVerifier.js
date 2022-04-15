@@ -1,7 +1,7 @@
 // Test if a new solution can be added for contract - SolnSquareVerifier
 // Test if an ERC721 token can be minted for contract - SolnSquareVerifier
 var SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
-var Verifier = artifacts.require('BN256G2');
+var Verifier = artifacts.require('Verifier');
 var proofData = artifacts.require('/home/polarbear/Documents/Blockchain-Capstone/zokrates/code/square/proof.json');
 
 contract('Test SolnSquareVerifier', accounts => {
