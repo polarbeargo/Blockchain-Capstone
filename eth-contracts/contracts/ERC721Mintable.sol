@@ -34,6 +34,10 @@ contract Ownable {
         _owner = newOwner;
     }
 
+    function getOwner() public view returns (address) {
+        return _owner;
+    }
+
     //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
     event TransferOwnership(address indexed oldOwner, address indexed newOwner);
 }
