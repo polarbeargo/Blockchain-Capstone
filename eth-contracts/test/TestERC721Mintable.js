@@ -18,7 +18,7 @@ contract('TestERC721Mintable', accounts => {
 
         it('should return total supply', async function () { 
             let res = await this.contract.totalSupply();
-            assert.equal(res, 5, "Incorrect total suppl.");
+            assert.equal(res, 4, "Incorrect total suppl.");
             
         })
 
@@ -47,11 +47,18 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should fail when minting when address is not contract owner', async function () { 
+            var emitted = false;
             
+            this.contract.Transfer((error, result) => {
+                emitted = true
+            })
+
+            assert.equal(emitted, false, 'fail when minting when address is not contract owner');
         })
 
         it('should return contract owner', async function () { 
-            
+            let owner = await this.contract.getOwner({from: account_one}); 
+            assert.equal(owner,account_one, 'Incorrect owner account');
         })
 
     });
