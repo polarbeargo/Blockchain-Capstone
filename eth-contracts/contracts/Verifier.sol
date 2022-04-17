@@ -810,6 +810,8 @@ contract Verifier {
         return 0;
     }
 
+    event Verified(string s);
+
     function verifyTx(
         uint256[2] memory a,
         uint256[2][2] memory b,
@@ -826,6 +828,7 @@ contract Verifier {
             inputValues[i] = input[i];
         }
         if (verify(inputValues, proof) == 0) {
+            emit Verified("Transaction verified.");
             return true;
         } else {
             return false;
