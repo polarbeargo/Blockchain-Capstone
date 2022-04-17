@@ -45,24 +45,6 @@ truffle migrate
 
 Your terminal should look something like this:
 
-![truffle test](images/truffle_migrate.png)
-
-Test smart contracts:
-
-```
-truffle test
-```
-
-All 10 tests should pass.
-
-![truffle test](images/truffle_test.png)
-
-In a separate terminal window, launch the DApp:
-
-```
-npm run dev
-```
-
 ```
 Compiling your contracts...
 ===========================
@@ -122,6 +104,32 @@ Summary
 > Total deployments:   2
 > Final cost:          0.08746796 ETH
 ```  
+
+Test smart contracts:
+
+```
+truffle test
+```
+
+All 10 tests should pass.
+
+![truffle test](images/truffle_test.png)
+
+In a separate terminal window, launch the DApp:
+
+```
+npm run dev
+```  
+## Getting Started with Zokrates  
+1. Install Docker (Docker for Desktop is fine too)
+2. Run: ```docker run -v <your repo location>/Blockchain-Capstone/zokrates/code:/home/zokrates/code -ti zokrates/zokrates /bin/bash```
+3. ```cd square```
+4. Compile the program written in ZoKrates DSL ```zokrates compile -i square.code```
+5. Run zocrates setup ```zokrates setup```
+6. Compute Witness ```zokrates compute-witness -a 3 9```
+7. Generate Proof ```zokrates generate-proof```
+8. Export Verifier ```zokrates export-verifier```  
+
 ## Contract Address
 - Verifier: 0x4E89f8aa1791173F5a8FfB21e390eaC6bB7427cc
 - SolnSquareVerifier: 0x788D4959f9f29ef088c6F98162165778C765Fee6
