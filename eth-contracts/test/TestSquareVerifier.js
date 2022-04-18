@@ -3,6 +3,7 @@
 
 let SquareVerifier = artifacts.require('Verifier.sol');
 const SolnSquareVerifier = artifacts.require('SolnSquareVerifier');
+var proofData = require('../../zokrates/code/square/proof');
 
 contract('Test SolnSquareVerifier', accounts => {
 
@@ -13,13 +14,13 @@ contract('Test SolnSquareVerifier', accounts => {
 
         // Test verification with correct proof
         it('verify with correct proof', async function () { 
-            let verification = await this.contract.verifyTx.call();
+            let verification = await this.contract.verifyTx.call(proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs);
             assert.equal(verification, true, 'Verification is invalid');
         })
 
         // Test verification with incorrect proof
         it('verify failure with incorrect proof', async function () { 
-            let verification = await this.contract.verifyTx.call();
+            let verification = await this.contract.verifyTx.call(proofData.proof.a, proofData.proof.b, proofData.proof.c, [1,2]);
             assert.equal(verification, false, 'Verification is valid');
         })
 
