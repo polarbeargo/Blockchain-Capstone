@@ -58,7 +58,7 @@ contract SolnSquareVerifier is CustomERC721Token {
         bytes32 key = keccak256(abi.encodePacked(a, b, c, input));
         require(uniqueSolutions[key].to == address(0));
         bool verified = verifierContract.verifyTx(a, b, c, input);
-        require(verified);
+        require(verified, "Solution is incorrect");
         addSolution(to, tokenId, key);
         super._mint(to, tokenId);
     }
