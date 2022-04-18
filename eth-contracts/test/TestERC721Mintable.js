@@ -2,13 +2,10 @@ var ERC721MintableComplete = artifacts.require('CustomERC721Token');
 
 contract('TestERC721Mintable', accounts => {
 
-    const account_one = accounts[0];
-    const account_two = accounts[1];
-
     describe('match erc721 spec', function () {
         let token_num = 5;
         beforeEach(async function () { 
-            this.contract = await ERC721MintableComplete.new({from: account_one});
+            this.contract = await ERC721MintableComplete.new({from: accounts[0]});
 
             // mint multiple tokens
             for(i = 1; i < token_num; i++) {
@@ -34,14 +31,17 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should transfer token from one owner to another', async function () { 
-            let owner = await this.contract.ownerOf(2);
-            assert.equal(owner, account_two, "token transfer fail");
+            let tokenId = 1;
+            await this.contract.approve(accounts[2], tokenId, {from: accounts[1]});
+            await this.contract.transferFrom(accounts[1], accounts[2], tokenId, {from: accounts[1]}); 
+            let tokenOwner = await this.contract.ownerOf.call(tokenId);
+            assert.equal(tokenOwner, accounts[2], 'token transfer fail')
         })
     });
 
     describe('have ownership properties', function () {
         beforeEach(async function () { 
-            this.contract = await ERC721MintableComplete.new({from: account_one});
+            this.contract = await ERC721MintableComplete.new({from: accounts[0]});
         })
 
         it('should fail when minting when address is not contract owner', async function () { 
@@ -55,8 +55,8 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should return contract owner', async function () { 
-            let owner = await this.contract.getOwner({from: account_one}); 
-            assert.equal(owner,account_one, 'Incorrect owner account');
+            let owner = await this.contract.getOwner({from: accounts[0]}); 
+            assert.equal(owner,accounts[0], 'Incorrect owner account');
         })
 
     });
