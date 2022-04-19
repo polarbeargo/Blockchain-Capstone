@@ -111,7 +111,11 @@ In a separate terminal window, launch the DApp:
 ```
 npm run dev
 ```  
-## Getting Started with Zokrates  
+### Migrate smart contracts to rinkeby blockchain:  
+```
+truffle migrate --network rinkeby
+```  
+### Getting Started with Zokrates  
 1. Install Docker (Docker for Desktop is fine too)
 2. Run: ```docker run -v <your repo location>/Blockchain-Capstone/zokrates/code:/home/zokrates/code -ti zokrates/zokrates /bin/bash```
 3. ```cd square```
@@ -121,10 +125,10 @@ npm run dev
 7. Generate Proof ```zokrates generate-proof```
 8. Export Verifier ```zokrates export-verifier```  
 
-## Contract Address
+### Contract Address
 - Verifier: 0x4E89f8aa1791173F5a8FfB21e390eaC6bB7427cc
 - SolnSquareVerifier: 0x788D4959f9f29ef088c6F98162165778C765Fee6
-## Contract Abi's  
+### Contract Abi's  
 ### Verifier:
 ```
 {
