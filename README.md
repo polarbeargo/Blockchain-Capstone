@@ -121,7 +121,7 @@ truffle migrate --network rinkeby
 3. ```cd square```
 4. Compile the program written in ZoKrates DSL ```zokrates compile -i square.code```
 5. Run zocrates setup ```zokrates setup```
-6. Compute Witness ```zokrates compute-witness -a 3 9```
+6. Compute Witness ```zokrates compute-witness -a 3 9``` follow [knowledge hub discuss](https://knowledge.udacity.com/questions/398019)
 7. Generate Proof ```zokrates generate-proof```
 8. Export Verifier ```zokrates export-verifier```  
 
