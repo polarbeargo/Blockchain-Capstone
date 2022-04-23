@@ -115,6 +115,159 @@ npm run dev
 ```
 truffle migrate --network rinkeby
 ```  
+
+```
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+WARNING: Ganache forking only supports EIP-1193-compliant providers. Legacy support for send is currently enabled, but will be removed in a future version _without_ a breaking change. To remove this warning, switch to an EIP-1193 provider. This error is probably caused by an old version of Web3's HttpProvider (or ganache < v7)
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'rinkeby-fork'
+> Network id:      4
+> Block gas limit: 30000000 (0x1c9c380)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > block number:        10551826
+   > block timestamp:     1650678730
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.199433657498414241
+   > gas used:            226537 (0x374e9)
+   > gas price:           2.500000007 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000566342501585759 ETH
+
+   -------------------------------------
+   > Total cost:     0.000566342501585759 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Verifier'
+   --------------------
+   > block number:        10551828
+   > block timestamp:     1650678733
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.19660157499048441
+   > gas used:            1087070 (0x10965e)
+   > gas price:           2.500000007 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00271767500760949 ETH
+
+
+   Deploying 'SolnSquareVerifier'
+   ------------------------------
+   > block number:        10551829
+   > block timestamp:     1650678748
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.188107729966701644
+   > gas used:            3397538 (0x33d7a2)
+   > gas price:           2.500000007 gwei
+   > value sent:          0 ETH
+   > total cost:          0.008493845023782766 ETH
+
+   -------------------------------------
+   > Total cost:     0.011211520031392256 ETH
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.011777862532978015 ETH
+
+
+
+
+Starting migrations...
+======================
+> Network name:    'rinkeby'
+> Network id:      4
+> Block gas limit: 29970705 (0x1c95111)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x231dc6d807dafe4a749a592b1c9d8f594dbcb006c9a392c2c79db1e7a50e5cb9
+   > Blocks: 1            Seconds: 17
+   > contract address:    0x4c7A355A808bf5C83823c27D8ab50cff681EF375
+   > block number:        10551833
+   > block timestamp:     1650678772
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.299773462998187704
+   > gas used:            226537 (0x374e9)
+   > gas price:           1.000000008 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000226537001812296 ETH
+
+   ✓ Saving migration to chain.
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.000226537001812296 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Deploying 'Verifier'
+   --------------------
+   > transaction hash:    0x51b7cbb1d3ba2358c5e6a3c16d4b7f1a6f9c800aaa5131c3dbdcb1e85300a8ca
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x78915b0755c5F1fC8E9b530F4F8895198042600F
+   > block number:        10551835
+   > block timestamp:     1650678802
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.29864062998912504
+   > gas used:            1087070 (0x10965e)
+   > gas price:           1.000000008 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00108707000869656 ETH
+
+
+   Deploying 'SolnSquareVerifier'
+   ------------------------------
+   > transaction hash:    0x9508cd84e6a0e9b838e56d87e427979fd0a9f6048b592c8eb019b6bda2be3777
+   > Blocks: 1            Seconds: 9
+   > contract address:    0x9dDa065781d9adE2D8B37624A727B1a5c078A806
+   > block number:        10551836
+   > block timestamp:     1650678817
+   > account:             0x68A5D02aB9C71892d1607B78bAB4f106BF142B21
+   > balance:             0.295243091961944736
+   > gas used:            3397538 (0x33d7a2)
+   > gas price:           1.000000008 gwei
+   > value sent:          0 ETH
+   > total cost:          0.003397538027180304 ETH
+
+   ✓ Saving migration to chain.
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:     0.004484608035876864 ETH
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.00471114503768916 ETH
+
+```  
+### Contract Transaction Hash on rinkeby blockchain:  
+- Verifier: 0x51b7cbb1d3ba2358c5e6a3c16d4b7f1a6f9c800aaa5131c3dbdcb1e85300a8ca  
+- SolnSquareVerifier: 0x9508cd84e6a0e9b838e56d87e427979fd0a9f6048b592c8eb019b6bda2be3777  
+### Contract Address on rinkeby blockchain:   
+- Verifier: 0x78915b0755c5F1fC8E9b530F4F8895198042600F  
+- SolnSquareVerifier: 0x9dDa065781d9adE2D8B37624A727B1a5c078A806   
+[Live deployment event on Etherscan](https://rinkeby.etherscan.io/address/0x68A5D02aB9C71892d1607B78bAB4f106BF142B21#events) 
+
 ### Getting Started with Zokrates  
 1. Install Docker (Docker for Desktop is fine too)
 2. Run: ```docker run -v <your repo location>/Blockchain-Capstone/zokrates/code:/home/zokrates/code -ti zokrates/zokrates /bin/bash```
@@ -124,10 +277,9 @@ truffle migrate --network rinkeby
 6. Compute Witness ```zokrates compute-witness -a 3 9``` follow [knowledge hub discuss](https://knowledge.udacity.com/questions/398019)
 7. Generate Proof ```zokrates generate-proof```
 8. Export Verifier ```zokrates export-verifier```  
-
-### Contract Address
-- Verifier: 0x4E89f8aa1791173F5a8FfB21e390eaC6bB7427cc
-- SolnSquareVerifier: 0x788D4959f9f29ef088c6F98162165778C765Fee6
+### Contract Address  
+- Verifier: 0x4E89f8aa1791173F5a8FfB21e390eaC6bB7427cc  
+- SolnSquareVerifier: 0x788D4959f9f29ef088c6F98162165778C765Fee6  
 ### Contract Abi's  
 ### Verifier:
 ```
