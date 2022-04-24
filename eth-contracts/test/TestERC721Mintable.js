@@ -1,15 +1,17 @@
 var ERC721MintableComplete = artifacts.require('CustomERC721Token');
 
 contract('TestERC721Mintable', accounts => {
-
+    const account1 = accounts[0];
+    const account2 = accounts[1];
+    const account3 = accounts[2];
     describe('match erc721 spec', function () {
         let token_num = 5;
         beforeEach(async function () { 
-            this.contract = await ERC721MintableComplete.new({from: accounts[0]});
+            this.contract = await ERC721MintableComplete.new({from: account1});
 
             // mint multiple tokens
             for(i = 1; i < token_num; i++) {
-                await this.contract.mint(accounts[i], i, {from: accounts[0]});
+                await this.contract.mint(accounts[i], i, {from: account1});
             }
         })
 
@@ -20,7 +22,7 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should get token balance', async function () { 
-            let balance = await this.contract.balanceOf.call(accounts[1], {from: accounts[0]});
+            let balance = await this.contract.balanceOf.call(account2, {from: account1});
             assert.equal(balance, 1, "Incorrect number of account_one token balance.");
         })
 
@@ -31,32 +33,32 @@ contract('TestERC721Mintable', accounts => {
         })
 
         it('should transfer token from one owner to another', async function () { 
-            let tokenId = 1;
-            await this.contract.approve(accounts[2], tokenId, {from: accounts[1]});
-            await this.contract.transferFrom(accounts[1], accounts[2], tokenId, {from: accounts[1]}); 
-            let tokenOwner = await this.contract.ownerOf.call(tokenId);
-            assert.equal(tokenOwner, accounts[2], 'token transfer fail')
+            await this.contract.transferFrom(account2, account3, 1, {from: account2}); 
+            let owner = await this.contract.ownerOf.call(1);
+            assert.equal(owner, account3, 'token transfer fail')
         })
     });
 
     describe('have ownership properties', function () {
         beforeEach(async function () { 
-            this.contract = await ERC721MintableComplete.new({from: accounts[0]});
+            this.contract = await ERC721MintableComplete.new({from: account1});
         })
 
         it('should fail when minting when address is not contract owner', async function () { 
             var emitted = false;
             
-            this.contract.Transfer((error, result) => {
+            try{
+                await this.contract.mint(account1, 4); 
+             } catch (e) {
                 emitted = true
-            })
+             }
 
             assert.equal(emitted, false, 'fail when minting when address is not contract owner');
         })
 
         it('should return contract owner', async function () { 
-            let owner = await this.contract.getOwner({from: accounts[0]}); 
-            assert.equal(owner,accounts[0], 'Incorrect owner account');
+            let owner = await this.contract.getOwner({from: account1}); 
+            assert.equal(owner,account1, 'Incorrect owner account');
         })
 
     });
