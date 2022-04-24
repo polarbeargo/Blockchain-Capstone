@@ -271,6 +271,9 @@ Summary
 - SolnSquareVerifier: 0x9dDa065781d9adE2D8B37624A727B1a5c078A806   
 [Live deployment event on Etherscan](https://rinkeby.etherscan.io/address/0x68A5D02aB9C71892d1607B78bAB4f106BF142B21#events) 
 
+## Contract Abi's
+- [Verifier](https://github.com/polarbeargo/Blockchain-Capstone/blob/master/eth-contracts/build/contracts/Verifier.json)  
+- [SolnSquareVerifier](https://github.com/polarbeargo/Blockchain-Capstone/blob/master/eth-contracts/build/contracts/SolnSquareVerifier.json)  
 ### Getting Started with Zokrates  
 1. Install Docker (Docker for Desktop is fine too)
 2. Run: ```docker run -v <your repo location>/Blockchain-Capstone/zokrates/code:/home/zokrates/code -ti zokrates/zokrates /bin/bash```
