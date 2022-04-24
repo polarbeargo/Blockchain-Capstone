@@ -1,6 +1,10 @@
 # Udacity Blockchain Capstone
 
-The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product. 
+The capstone will build upon the knowledge you have gained in the course in order to build a decentralized housing product as the following:  
+- Before mint a token, we need to verify we own the property. 
+- We will generate a pre-knowledge proof using zokrates, zk-SNARKs to create a verification system which can prove we have title to the property without revealing that specific information on the property.
+- We will be minting our own tokens to represent we title to the properties. 
+- Once the token has been verified we will place it on a blockchain market place (OpenSea) for others to purchase.
 
 Clone this repository:
 
