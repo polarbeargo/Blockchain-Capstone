@@ -13,13 +13,21 @@ contract('Test SolnSquareVerifier', accounts => {
 
         it('if a new solution can be added for contract and token minted - SolnSquareVerifier', async function () { 
             let success = true;
+            let tx = 'No Event'
+            let owner = 0x0000000
+
             try {
-                await this.contract.mintNewNFT(proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs, accounts[1],2);
+                tx = await this.contract.mintNewNFT(proofData.proof.a, proofData.proof.b, proofData.proof.c, proofData.inputs, accounts[1],2);
+                event = tx.logs[0].event
+                owner = await this.contract.ownerOf(2)
+
             } catch(error) {
                 success = false;
             }
 
-            assert.equal(success, true, 'Can not add solution')
+            assert.equal(event, 'AddSolution', 'event not emitted')
+            assert.equal(owner, accounts[1], 'token is not minted')
+            assert.equal(success, true, 'Can not add solution')         
         })
 
         it('if a repeat solution can be added for contract - SolnSquareVerifier', async function () { 
