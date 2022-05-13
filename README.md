@@ -288,7 +288,7 @@ Summary
 7. Generate Proof ```zokrates generate-proof```
 8. Export Verifier ```zokrates export-verifier```  
 ## OpenSea MarketPlace Storefront link
-https://testnets.opensea.io/assets/0xf4adaf06f97f8b5b9639f776de5a049c6b5dfe91/1
+https://testnets.opensea.io/collection/decentralized-real-estate-marketplace-v4
 # Project Resources
 
 * [Remix - Solidity IDE](https://remix.ethereum.org/)
